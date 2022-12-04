@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5382 Secure Programming</title>
+</head>
+<body >
+    <div style="text-align: center;">
+        <h1>Name: Chaitanya Dayanand Chaudhari</h1>
+        <h1>UTA ID:- 1001879470</h1>
+    </div>
+    <div class="container">
+       
+        <br/>
+        <br/>
+
+        <br/>
+        
+            {% block content %}    
+            <h2 >{{output}}</h2>
+            {% endblock content %}
+        <br/>
+        <div>
+            <form action="/register" autocomplete="on" method="POST" enctype="multipart/form-data">
+                <label for="fname" class="form-label" >First Name</label>
+                <input type="text" placeholder="Enter First" maxlength="20" name="fname" class="form-control" required>
+                <label for="lname" class="form-label" >Last Name</label>
+                <input type="text" placeholder="Enter First" maxlength="20" name="lname" class="form-control" required>
+                <label for="uname" class="form-label" >Username</label>
+                <input type="text" placeholder="Enter Username" maxlength="16" name="uname" class="form-control" required>
+                <label for="psw" class="form-label">Password</label>
+                <input type="text" placeholder="Enter Password" name="psw" maxlength="16" class="form-control" required>
+                <label for="cpsw" class="form-label">Confirm Password</label>
+                <input type="password" placeholder="Confirm Password" name="cpsw" maxlength="16" class="form-control" required>
+                <label for="email" class="form-label">Email</label>
+                <input type="email" placeholder="Enter email" name="email" class="form-control" maxlength="50" required>
+                <label for="role" class="form-label">Role</label>
+                <select name="role" id="role" class="form-control" required>
+                    <option value="Admin">Admin</option>
+                    <option value="User">User</option>
+                </select>
+                <br/>
+                <button type="submit" id="btnReg" class="btn btn-lg btn-block btn-primary"  >Register</button>
+                <button type="reset" id="btnReg" class="btn btn-lg btn-block btn-primary"  >Clear</button>
+                <br/>
+            </form>
+                <a href="/loginpage"><button type="submit" id="btnCancel" class="btn btn-lg btn-block btn-primary">Login</button></a>
+                </div>
+
+
+        </div>
+        
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5382 Secure Programming</title>
+    <style>
+
+#navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+table, th, td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+}
+    </style>
+</head>
+<body >
+    <div style="text-align: center;">
+        <h1>Name: Chaitanya Dayanand Chaudhari</h1>
+        <h1>UTA ID:- 1001879470</h1>
+    </div>
+    <h3>Logged in as <strong>{{session['username']}}</strong></h3>
+    <div id="navbar">
+        <a href="/homepage">Home</a>
+        <a href="/userpage">Users</a>
+        <a href="/grouppage">Groups</a>
+        <a href="/logout">Logout</a>
+      </div>
+    <div class="container">
+       
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        
+            {% block content %}    
+            <h2 >{{message}}</h2>
+        <br/>
+        <br/>
+        <h2 >{{grps}} :- </h2>
+                <table style="border:5px solid black; padding: 10px 10px 10px 10px;">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+        
+                    </tr>
+                    {% for rows in myOutput %}
+                        <tr>
+                            <td>
+                                {{rows['fname']}}
+                            </td>
+                            <td>
+                                {{rows['lname']}}
+                            </td>
+                            <td>
+                                {{rows['uname']}}
+                            </td>
+                            <td>
+                                {{rows['email']}}
+                            </td>   
+                        </tr>
+        
+                    {% endfor %}
+                </table>
+        <br/>
+        <h2>Add User:</h2>
+        <form action="/addgroupuser" autocomplete="on" method="POST" enctype="multipart/form-data">
+            <label for="users" class="form-label">Select User to add to this group:- </label>
+            <input type="hidden" value="{{grps}}" name="grp">
+            <select class="form-control" name=users required>
+                {% for item in myOutput1 %}
+                <option value="{{ item.uname }}">{{ item.fname }} {{ item.lname }}</option>
+                {% endfor %}
+            </select>
+            <br/>
+            <button type="submit" id="btnLogin" class="btn btn-lg btn-block btn-primary"  >Add User</button>
+            <br/>
+        </form>
+        <h2>Delete User:</h2>
+        <form action="/deletegroupuser" autocomplete="on" method="POST" enctype="multipart/form-data">
+            <label for="users" class="form-label">Select User to Delete from this group:- </label>
+            <input type="hidden" value="{{grps}}" name="grp">
+            <select class="form-control" name=users required>
+                {% for item in myOutput2 %}
+                <option value="{{ item.uname }}">{{ item.fname }} {{ item.lname }}</option>
+                {% endfor %}
+            </select>
+            <br/>
+            <button type="submit" id="btnLogin" class="btn btn-lg btn-block btn-primary"  >Delete User</button>
+            <br/>
+        </form>
+        {% endblock content %}
+        <br/>
+        
+    </div>
+    
+</body>
+</html>

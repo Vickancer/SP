@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5382 Secure Programming</title>
+    <style>
+
+#navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+table, th, td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+}
+    </style>
+</head>
+<body >
+    <div style="text-align: center;">
+        <h1>Name: Chaitanya Dayanand Chaudhari</h1>
+        <h1>UTA ID:- 1001879470</h1>
+    </div>
+    <h3>Logged in as <strong>{{session['username']}}</strong></h3>
+    <div id="navbar">
+        <a href="/homepage">Home</a>
+        <a href="/userpage">Users</a>
+        <a href="/grouppage">Groups</a>
+        <a href="/logout">Logout</a>
+      </div>
+    <div class="container">
+       
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        
+            {% block content %}    
+            <h2 >{{message}}</h2>
+        <br/>
+        <br/>
+        
+                <table style="border:5px solid black; padding: 10px 10px 10px 10px;">
+                    <tr>
+                        <th>Groups</th>
+        
+                    </tr>
+                    {% for rows in myOutput %}
+                        <tr>
+                            <td>
+                                {{rows['Name']}}
+                            </td>      
+                        </tr>
+        
+                    {% endfor %}
+                </table>
+        <br/>
+        <h2>Add Group:</h2>
+        <form action="/addgroup" autocomplete="on" method="POST" enctype="multipart/form-data">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" placeholder="Enter Groupname" maxlength="16" name="name" class="form-control" required><br/>
+            <button type="submit" id="btnLogin" class="btn btn-lg btn-block btn-primary">Add group</button>
+        </form>
+        <br/>
+        <h2>View Group Users:</h2>
+        <form action="/groupusers" autocomplete="on" method="POST" enctype="multipart/form-data">
+            <label for="group" class="form-label">Select Group to view Users</label>
+            <select class="form-control" name=group required>
+                {% for item in myOutput %}
+                <option value="{{ item.Name }}">{{ item.Name }}</option>
+                {% endfor %}
+            </select>
+            <br/>
+            <button type="submit" id="btnLogin" class="btn btn-lg btn-block btn-primary"  >See Users</button>
+            <br/>
+        </form>
+        {% endblock content %}
+        <br/>
+        
+    </div>
+    
+</body>
+</html>

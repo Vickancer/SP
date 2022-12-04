@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5382 Secure Programming</title>
+</head>
+<body >
+    <div style="text-align: center;">
+        <h1>Name: Chaitanya Dayanand Chaudhari</h1>
+        <h1>UTA ID:- 1001879470</h1>
+    </div>
+    <div class="container">
+       
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        
+            {% block content %}    
+            <h2 >{{output}}</h2>
+            {% endblock content %}
+        <br/>
+        <br/>
+        <div>
+            <form action="/login" autocomplete="on" method="POST" enctype="multipart/form-data">
+                <label for="uname" class="form-label" >Username</label>
+                <input type="text" placeholder="Enter Username" maxlength="16" name="uname" class="form-control" required>
+                <label for="psw" class="form-label">Password</label>
+                <input type="password" placeholder="Enter Password" name="psw" maxlength="16" class="form-control" required>
+                <label for="role" class="form-label">Role</label>
+                <select name="role" id="role" class="form-control" required>
+                    <option value="Admin">Admin</option>
+                    <option value="User">User</option>
+                </select>
+                <br/>
+                <button type="submit" id="btnLogin" class="btn btn-lg btn-block btn-primary"  >Login</button>
+                <br/>
+            </form>
+                <a href="/registerpage"><button type="submit" id="btnReg" class="btn btn-lg btn-block btn-primary mb-2" >New User? Register here</button></a>
+                </div>
+
+
+        </div>
+        
+    </div>
+    
+</body>
+</html>
